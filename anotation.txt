@@ -1,0 +1,5 @@
+interface Element {
+    children: React.ReactNode
+}
+
+// substituição de genérics em React.FC
