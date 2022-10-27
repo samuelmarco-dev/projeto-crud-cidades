@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../shared/components/Home";
 
 function AppRoutes() {
-    return (  
+    return (
         <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="*" element={<Navigate to="/home" />} />
