@@ -2,11 +2,7 @@ import {
     Avatar,
     Divider,
     Drawer,
-    Icon,
     List,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
     useMediaQuery,
     useTheme,
 } from "@mui/material";
@@ -14,6 +10,7 @@ import { Box } from "@mui/system";
 import { ReactNode } from "react";
 import Image from "../../../images/paisagem.jpg";
 import { useDrawerContext } from "../../hooks";
+import { Options } from "./options";
 
 interface Children {
     children: ReactNode;
@@ -23,7 +20,7 @@ export const MenuDrawer: React.FC<Children> = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const { open, toggleOpen } = useDrawerContext();
+    const { open, toggleOpen, drawerOptions } = useDrawerContext();
 
     return (
         <>
@@ -59,12 +56,21 @@ export const MenuDrawer: React.FC<Children> = ({ children }) => {
 
                     <Box flex={1}>
                         <List component="nav">
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Icon>home</Icon>
-                                </ListItemIcon>
-                                <ListItemText primary="Página Inicial" />
-                            </ListItemButton>
+                            {
+                                drawerOptions ?
+                                    drawerOptions.map(({ icon, label, path }, index) => {
+                                        return (
+                                            <Options
+                                                key={index}
+                                                to={path}
+                                                icon={icon}
+                                                label={label}
+                                                onClick={smDown ? toggleOpen : undefined}
+                                            />
+                                        )
+                                    })
+                                : <></>
+                            }
                         </List>
                     </Box>
                 </Box>
