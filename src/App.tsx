@@ -1,16 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
+import { AppThemeProvider, DrawerProvider } from "./shared/contexts";
+import { MenuDrawer } from "./shared/components";
+import { AppRoutes } from "./routes";
 
-import { AppThemeProvider } from "./shared/contexts";
-import AppRoutes from "./routes";
-
-function App() {
+export const App: React.FC = () => {
     return (
         <AppThemeProvider>
-            <BrowserRouter>
-                <AppRoutes />
-            </BrowserRouter>
+            <DrawerProvider>
+                <BrowserRouter>
+
+                    <MenuDrawer>
+                        <AppRoutes />
+                    </MenuDrawer>
+
+                </BrowserRouter>
+            </DrawerProvider>
         </AppThemeProvider>
     );
-}
-
-export default App;
+};

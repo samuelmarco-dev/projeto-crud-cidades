@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useThemeContext } from "../../hooks";
 
-function Home() {
+export const Home: React.FC = () => {
     const { toggleTheme } = useThemeContext();
 
     return (
@@ -9,6 +9,4 @@ function Home() {
             Clique aqui
         </Button>
     );
-}
-
-export default Home;
+};
