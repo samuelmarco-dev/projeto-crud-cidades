@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Home } from "../shared/components";
+import { Dashboard, Home } from "../pages";
 import { useDrawerContext } from "../shared/hooks";
 
 export const AppRoutes: React.FC = () => {
@@ -11,15 +11,17 @@ export const AppRoutes: React.FC = () => {
             {
                 icon: 'home',
                 label: 'Página Inicial',
-                path: '/home'
+                path: '/inicial'
             }
         ]);
     }, [handleOptions]);
 
     return (
         <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="/inicial" element={<Dashboard/>} />
+            <Route path="/cadastro" element={<Home/>} />
+
+            <Route path="*" element={<Navigate to="/cadastro"/>} />
         </Routes>
     );
 };
